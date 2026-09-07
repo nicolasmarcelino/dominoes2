@@ -25,7 +25,7 @@ while testes:
     total_dominos, total_enfileirados, total_empurrados = input().split()
     total_dominos, total_enfileirados, total_empurrados = int(total_dominos), int(total_enfileirados), int(total_empurrados)
 
-    if not (1 <= total_dominos <= 10000 and 1 <= total_enfileirados <= 10000 and 1 <= total_empurrados <= 10000):
+    if not (0 <= total_dominos <= 10000 and 0 <= total_enfileirados <= 10000 and 0 <= total_empurrados <= 10000):
         testes -= 1
         continue
 
