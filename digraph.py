@@ -1,55 +1,11 @@
-"""
-   Execution:    python -m algs4.digraph input.txt
-   Dependencies: algs4 modules + Python stdlib
-   Data files:   ../dataset/tinyDG.txt
-                 ../dataset/mediumDG.txt
-                 ../dataset/largeDG.txt
- 
-   A graph, implemented using an array of bags.
-   Parallel edges and self-loops are permitted.
- 
-   % python -m algs4.digraph ../dataset/tinyDG.txt
-   13 vertices, 22 edges
-   0: 5 1 
-   1: 
-   2: 0 3 
-   3: 5 2 
-   4: 3 2 
-   5: 4 
-   6: 9 4 8 0 
-   7: 6 9
-   8: 6 
-   9: 11 10 
-   10: 12 
-   11: 4 12 
-   12: 9 
- 
- """
 from bag import Bag
-
 
 class Digraph:
 
-    def __init__(self, v=0, **kwargs):
+    def __init__(self, v=0):
         self.V = v
         self.E = 0
         self.adj = [Bag() for _ in range(self.V)]
-
-        if 'file' in kwargs:
-            # init a digraph by a file input
-            in_file = kwargs['file']
-            self.V = int(in_file.readline())
-            self.adj = [Bag() for _ in range(self.V)]
-            E = int(in_file.readline())
-            for i in range(E):
-                v, w = in_file.readline().split()
-                self.add_edge(int(v), int(w))
-
-    def __str__(self):
-        s = "%d vertices, %d edges\n" % (self.V, self.E)
-        s += "\n".join("%d: %s" % (v, " ".join(str(w)
-                                               for w in self.adj[v])) for v in range(self.V))
-        return s
 
     def add_edge(self, v, w):
         v, w = int(v), int(w)
@@ -81,15 +37,3 @@ class Digraph:
                 R.add_edge(w, v)
             v += 1
         return R
-
-
-if __name__ == '__main__':
-    import sys
-    f = open(sys.argv[1])
-    V = int(f.readline())
-    E = int(f.readline())
-    g = Digraph(V)
-    for i in range(E):
-        v, w = f.readline().split()
-        g.add_edge(v, w)
-    print(g)

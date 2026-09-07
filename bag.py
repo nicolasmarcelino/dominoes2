@@ -1,16 +1,4 @@
-
-"""
-Execution:    python -m algs4.bag ../dataset/tobe.txt
-
-% more ../dataset/tobe.txt
-to be or not to - be - - that - - - is
-
-% python -m algs4.bag ../dataset/tobe.txt
-to be or not to - be - - that - - - is
-"""
-
 from linklist import Node, LinkIterator
-
 
 class Bag:
 
@@ -34,14 +22,3 @@ class Bag:
         oldfirst = self.first
         self.first = Node(item, oldfirst)
         self.n += 1
-
-
-if __name__ == '__main__':
-    import sys
-    for line in sys.stdin:
-        bag = Bag()
-        for item in line.split():
-            bag.add(item)
-        print("size of bag = ", bag.size())
-        for i in bag:
-            print(i)
