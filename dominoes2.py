@@ -39,11 +39,9 @@ while testes:
     while total_empurrados:
         derrubado_manualmente = int(input())
 
-        reachable = DirectedDFS(g, [derrubado_manualmente - 1]) ## inicia DFS a partir
+        dfs = DirectedDFS(g, [derrubado_manualmente - 1]) ## inicia DFS a partir
         
-        for v in range(g.V):
-            if reachable.marked(v):
-                derrubados += 1
+        derrubados += dfs.count
 
         total_empurrados = total_empurrados - 1
     
