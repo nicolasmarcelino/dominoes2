@@ -22,6 +22,7 @@ testes = int(input())
 while testes:
 
     derrubados = 0
+    empurrados = []
     total_dominos, total_enfileirados, total_empurrados = input().split()
     total_dominos, total_enfileirados, total_empurrados = int(total_dominos), int(total_enfileirados), int(total_empurrados)
 
@@ -39,12 +40,12 @@ while testes:
     while total_empurrados:
         derrubado_manualmente = int(input())
 
-        dfs = DirectedDFS(g, [derrubado_manualmente - 1]) ## inicia DFS a partir
-        
-        derrubados += dfs.count
+        empurrados.append(derrubado_manualmente - 1)
 
         total_empurrados = total_empurrados - 1
     
+    dfs = DirectedDFS(g, empurrados)
+    derrubados += dfs.count
     print(derrubados)
 
     testes = testes - 1
